@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "m9wrOLat4x4ZcEKSPALOcHicUA2X7i2w/6YF1Gng6F3/sy2XTeCS+f/wQfDzI1TiFaOl2rCGdjBewxwJUPV35g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\julio\\OneDrive\\Documentos\\ANTLR\\AntlrCSharp\\AntlrCSharp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\julio\\.nuget\\packages\\antlr4.runtime.standard\\4.13.1\\antlr4.runtime.standard.4.13.1.nupkg.sha512"
+  ],
+  "logs": []
+}

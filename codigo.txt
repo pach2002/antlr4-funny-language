@@ -1,0 +1,12 @@
+Para cada i en el rango de 1 a 3 Inicio
+    Escribir: "Inicio del ciclo."
+    Escribir: "i es: " + i
+Fin
+
+Si x es mayor que 10 Inicio
+    Escribir: "X es mayor que 10."
+Fin
+
+Mientras y es diferente de 0 Inicio
+    Escribir: "Y sigue siendo diferente de 0."
+Fin
