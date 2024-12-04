@@ -1,39 +1,107 @@
 ﻿using System;
-using Antlr4.Runtime;
+using System.Collections.Generic;
 using System.IO;
+using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
+
 
 class Program
 {
+    // Almacenamos las variables declaradas
+    static Dictionary<string, int> variables = new Dictionary<string, int>();
+
     static void Main(string[] args)
     {
-        // Verifica que el archivo de entrada exista
-        string inputPath = "codigo.txt"; // Ruta de tu archivo de entrada
-        if (!File.Exists(inputPath))
-        {
-            Console.WriteLine("El archivo de entrada no existe.");
-            return;
-        }
+        // Ruta del archivo de entrada
+        string filePath = "input.txt";  // Asegúrate de tener el archivo en la misma carpeta del proyecto o proporciona la ruta completa
 
-        // Lee el contenido del archivo de entrada
-        string input = File.ReadAllText(inputPath);
+        // Leer el contenido del archivo
+        string input = ReadFile(filePath);
 
-        // Crea el flujo de entrada para ANTLR
+        // Analizar la entrada
         var inputStream = new AntlrInputStream(input);
-
-        // Crea el lexer y el parser para procesar el flujo de entrada
-        var lexer = new NaturalCodeLexer(inputStream);
+        var lexer = new NaturalLangOpsLexer(inputStream);
         var tokens = new CommonTokenStream(lexer);
-        var parser = new NaturalCodeParser(tokens);
+        var parser = new NaturalLangOpsParser(tokens);
 
-        // Obtiene el árbol de sintaxis generado por el parser
+        // Crear el listener para ejecutar las operaciones
+        var listener = new NaturalLangOpsListener();
+        var walker = new ParseTreeWalker();
         var tree = parser.program();
 
-        // Crea el visitor para traducir el árbol a código ejecutable
-        var visitor = new NaturalCodeVisitor();
-        string result = visitor.Visit(tree);
+        // Ejecutar el programa
+        walker.Walk(listener, tree);
 
-        // Muestra el código generado en consola
-        Console.WriteLine("Código traducido:");
-        Console.WriteLine(result);
+        // Mostrar los resultados de las variables
+        foreach (var item in variables)
+        {
+            Console.WriteLine($"{item.Key} = {item.Value}");
+        }
+    }
+
+    // Función para leer el contenido de un archivo
+    static string ReadFile(string filePath)
+    {
+        if (!File.Exists(filePath))
+        {
+            throw new FileNotFoundException($"El archivo '{filePath}' no se encuentra.");
+        }
+        return File.ReadAllText(filePath);
+    }
+
+    // Listener para ejecutar las operaciones
+    class NaturalLangOpsListener : NaturalLangOpsBaseListener
+    {
+        public override void ExitOperation(NaturalLangOpsParser.OperationContext context)
+        {
+            // Obtener los operandos
+            string leftExpr = context.expr(0).GetText();  // Primer operando (NUMERO o variable)
+            string operatorToken = context.operador().GetText();   // Operador como texto (MAS, MENOS, POR, ENTRE)
+            string rightExpr = context.expr(1).GetText(); // Segundo operando (NUMERO o variable)
+
+            // Obtener el nombre de la variable a la que se asignará el resultado
+            string variableName = context.ID().GetText();
+
+            // Convertir el operando izquierdo a un valor
+            int leftOperand;
+            if (!int.TryParse(leftExpr, out leftOperand))
+            {
+                leftOperand = variables[leftExpr];  // Si no es número, buscarlo en variables
+            }
+
+            // Convertir el operando derecho a un valor
+            int rightOperand;
+            if (!int.TryParse(rightExpr, out rightOperand))
+            {
+                rightOperand = variables[rightExpr];  // Si no es número, buscarlo en variables
+            }
+
+            // Ejecutar la operación según el operador
+            int result = 0;
+
+            if (operatorToken == "MAS")
+            {
+                result = leftOperand + rightOperand;
+            }
+            else if (operatorToken == "MENOS")
+            {
+                result = leftOperand - rightOperand;
+            }
+            else if (operatorToken == "POR")
+            {
+                result = leftOperand * rightOperand;
+            }
+            else if (operatorToken == "ENTRE")
+            {
+                result = leftOperand / rightOperand;
+            }
+            else
+            {
+                throw new InvalidOperationException($"Operador desconocido: {operatorToken}");
+            }
+
+            // Guardar el resultado de la operación en la variable
+            variables[variableName] = result;
+        }
     }
 }

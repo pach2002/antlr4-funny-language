@@ -1,0 +1,4 @@
+1 MAS 2 es igual a variable1;
+variable1 MENOS 2 es igual a variable2;
+variable2 POR 3 es igual a variable3;
+variable3 ENTRE 2 es igual a variable4;

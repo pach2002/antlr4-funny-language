@@ -15,3 +15,4 @@ C:\Users\julio\OneDrive\Documentos\ANTLR\AntlrCSharp\obj\Debug\net8.0\refint\Ant
 C:\Users\julio\OneDrive\Documentos\ANTLR\AntlrCSharp\obj\Debug\net8.0\AntlrCSharp.pdb
 C:\Users\julio\OneDrive\Documentos\ANTLR\AntlrCSharp\obj\Debug\net8.0\AntlrCSharp.genruntimeconfig.cache
 C:\Users\julio\OneDrive\Documentos\ANTLR\AntlrCSharp\obj\Debug\net8.0\ref\AntlrCSharp.dll
+C:\Users\julio\OneDrive\Documentos\ANTLR\AntlrCSharp\obj\Debug\net8.0\AntlrCSharp.sourcelink.json
