@@ -1,4 +1,13 @@
-1 MAS 2 es igual a variable1;
-variable1 MENOS 2 es igual a variable2;
-variable2 POR 3 es igual a variable3;
-variable3 ENTRE 2 es igual a variable4;
+10 MAS 5 ES IGUAL A suma;
+suma MENOS 3 ES IGUAL A diferencia;
+diferencia POR 2 ES IGUAL A producto;
+producto ENTRE 4 ES IGUAL A cociente;
+
+10 ES MAYOR 5 GUARDAR mayor1;
+suma ES MENOR diferencia GUARDAR menor1;
+
+MOSTRAR suma;
+MOSTRAR diferencia;
+MOSTRAR mayor1;
+MOSTRAR menor1;
+MOSTRAR cociente;

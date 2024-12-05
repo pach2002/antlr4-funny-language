@@ -72,6 +72,30 @@ public partial class NaturalLangOpsBaseListener : INaturalLangOpsListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitOperation([NotNull] NaturalLangOpsParser.OperationContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.booleanOperation"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterBooleanOperation([NotNull] NaturalLangOpsParser.BooleanOperationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NaturalLangOpsParser.booleanOperation"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitBooleanOperation([NotNull] NaturalLangOpsParser.BooleanOperationContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.mostrarStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMostrarStatement([NotNull] NaturalLangOpsParser.MostrarStatementContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NaturalLangOpsParser.mostrarStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMostrarStatement([NotNull] NaturalLangOpsParser.MostrarStatementContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -95,6 +119,18 @@ public partial class NaturalLangOpsBaseListener : INaturalLangOpsListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitOperador([NotNull] NaturalLangOpsParser.OperadorContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.comparator"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterComparator([NotNull] NaturalLangOpsParser.ComparatorContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NaturalLangOpsParser.comparator"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitComparator([NotNull] NaturalLangOpsParser.ComparatorContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>

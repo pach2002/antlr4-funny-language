@@ -61,6 +61,26 @@ public interface INaturalLangOpsListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitOperation([NotNull] NaturalLangOpsParser.OperationContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.booleanOperation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterBooleanOperation([NotNull] NaturalLangOpsParser.BooleanOperationContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NaturalLangOpsParser.booleanOperation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitBooleanOperation([NotNull] NaturalLangOpsParser.BooleanOperationContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.mostrarStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMostrarStatement([NotNull] NaturalLangOpsParser.MostrarStatementContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NaturalLangOpsParser.mostrarStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMostrarStatement([NotNull] NaturalLangOpsParser.MostrarStatementContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -80,4 +100,14 @@ public interface INaturalLangOpsListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitOperador([NotNull] NaturalLangOpsParser.OperadorContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.comparator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterComparator([NotNull] NaturalLangOpsParser.ComparatorContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NaturalLangOpsParser.comparator"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitComparator([NotNull] NaturalLangOpsParser.ComparatorContext context);
 }
