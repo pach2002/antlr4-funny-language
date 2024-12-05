@@ -71,6 +71,26 @@ public interface INaturalLangOpsListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitBooleanOperation([NotNull] NaturalLangOpsParser.BooleanOperationContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.ifStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterIfStatement([NotNull] NaturalLangOpsParser.IfStatementContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NaturalLangOpsParser.ifStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitIfStatement([NotNull] NaturalLangOpsParser.IfStatementContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.condition"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCondition([NotNull] NaturalLangOpsParser.ConditionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NaturalLangOpsParser.condition"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCondition([NotNull] NaturalLangOpsParser.ConditionContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.mostrarStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

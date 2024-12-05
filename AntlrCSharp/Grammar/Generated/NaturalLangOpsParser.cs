@@ -37,22 +37,25 @@ public partial class NaturalLangOpsParser : Parser {
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, T__10=11, T__11=12, ID=13, NUMERO=14, WS=15;
+		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
+		ID=18, NUMERO=19, WS=20;
 	public const int
 		RULE_program = 0, RULE_statement = 1, RULE_operation = 2, RULE_booleanOperation = 3, 
-		RULE_mostrarStatement = 4, RULE_expr = 5, RULE_operador = 6, RULE_comparator = 7;
+		RULE_ifStatement = 4, RULE_condition = 5, RULE_mostrarStatement = 6, RULE_expr = 7, 
+		RULE_operador = 8, RULE_comparator = 9;
 	public static readonly string[] ruleNames = {
-		"program", "statement", "operation", "booleanOperation", "mostrarStatement", 
-		"expr", "operador", "comparator"
+		"program", "statement", "operation", "booleanOperation", "ifStatement", 
+		"condition", "mostrarStatement", "expr", "operador", "comparator"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "';'", "'ES IGUAL A'", "'GUARDAR'", "'MOSTRAR'", "'MAS'", "'MENOS'", 
-		"'POR'", "'ENTRE'", "'ES MAYOR'", "'ES MENOR'", "'ES IGUAL'", "'ES DISTINTO'"
+		null, "';'", "'ES IGUAL A'", "'GUARDAR'", "'SI'", "'ENTONCES'", "'{'", 
+		"'}'", "'SINO'", "'MOSTRAR'", "'MAS'", "'MENOS'", "'POR'", "'ENTRE'", 
+		"'ES MAYOR'", "'ES MENOR'", "'ES IGUAL'", "'ES DISTINTO'"
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, "ID", "NUMERO", "WS"
+		null, null, null, null, null, null, "ID", "NUMERO", "WS"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -118,20 +121,20 @@ public partial class NaturalLangOpsParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 17;
+			State = 21;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			do {
 				{
 				{
-				State = 16;
+				State = 20;
 				statement();
 				}
 				}
-				State = 19;
+				State = 23;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 24592L) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 786960L) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -155,6 +158,9 @@ public partial class NaturalLangOpsParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public MostrarStatementContext mostrarStatement() {
 			return GetRuleContext<MostrarStatementContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public IfStatementContext ifStatement() {
+			return GetRuleContext<IfStatementContext>(0);
+		}
 		public StatementContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -177,34 +183,41 @@ public partial class NaturalLangOpsParser : Parser {
 		StatementContext _localctx = new StatementContext(Context, State);
 		EnterRule(_localctx, 2, RULE_statement);
 		try {
-			State = 30;
+			State = 35;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,1,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 21;
+				State = 25;
 				operation();
-				State = 22;
+				State = 26;
 				Match(T__0);
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 24;
+				State = 28;
 				booleanOperation();
-				State = 25;
+				State = 29;
 				Match(T__0);
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 27;
+				State = 31;
 				mostrarStatement();
-				State = 28;
+				State = 32;
 				Match(T__0);
+				}
+				break;
+			case 4:
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 34;
+				ifStatement();
 				}
 				break;
 			}
@@ -255,15 +268,15 @@ public partial class NaturalLangOpsParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 32;
+			State = 37;
 			expr();
-			State = 33;
+			State = 38;
 			operador();
-			State = 34;
+			State = 39;
 			expr();
-			State = 35;
+			State = 40;
 			Match(T__1);
-			State = 36;
+			State = 41;
 			Match(ID);
 			}
 		}
@@ -313,16 +326,169 @@ public partial class NaturalLangOpsParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 38;
+			State = 43;
 			expr();
-			State = 39;
+			State = 44;
 			comparator();
-			State = 40;
+			State = 45;
 			expr();
-			State = 41;
+			State = 46;
 			Match(T__2);
-			State = 42;
+			State = 47;
 			Match(ID);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class IfStatementContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ConditionContext condition() {
+			return GetRuleContext<ConditionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext[] statement() {
+			return GetRuleContexts<StatementContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public StatementContext statement(int i) {
+			return GetRuleContext<StatementContext>(i);
+		}
+		public IfStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_ifStatement; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			INaturalLangOpsListener typedListener = listener as INaturalLangOpsListener;
+			if (typedListener != null) typedListener.EnterIfStatement(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			INaturalLangOpsListener typedListener = listener as INaturalLangOpsListener;
+			if (typedListener != null) typedListener.ExitIfStatement(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public IfStatementContext ifStatement() {
+		IfStatementContext _localctx = new IfStatementContext(Context, State);
+		EnterRule(_localctx, 8, RULE_ifStatement);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 49;
+			Match(T__3);
+			State = 50;
+			condition();
+			State = 51;
+			Match(T__4);
+			State = 52;
+			Match(T__5);
+			State = 54;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			do {
+				{
+				{
+				State = 53;
+				statement();
+				}
+				}
+				State = 56;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 786960L) != 0) );
+			State = 58;
+			Match(T__6);
+			State = 68;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==T__7) {
+				{
+				State = 59;
+				Match(T__7);
+				State = 60;
+				Match(T__5);
+				State = 62;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				do {
+					{
+					{
+					State = 61;
+					statement();
+					}
+					}
+					State = 64;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 786960L) != 0) );
+				State = 66;
+				Match(T__6);
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ConditionContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ExprContext[] expr() {
+			return GetRuleContexts<ExprContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ExprContext expr(int i) {
+			return GetRuleContext<ExprContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ComparatorContext comparator() {
+			return GetRuleContext<ComparatorContext>(0);
+		}
+		public ConditionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_condition; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			INaturalLangOpsListener typedListener = listener as INaturalLangOpsListener;
+			if (typedListener != null) typedListener.EnterCondition(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			INaturalLangOpsListener typedListener = listener as INaturalLangOpsListener;
+			if (typedListener != null) typedListener.ExitCondition(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ConditionContext condition() {
+		ConditionContext _localctx = new ConditionContext(Context, State);
+		EnterRule(_localctx, 10, RULE_condition);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 70;
+			expr();
+			State = 71;
+			comparator();
+			State = 72;
+			expr();
 			}
 		}
 		catch (RecognitionException re) {
@@ -358,13 +524,13 @@ public partial class NaturalLangOpsParser : Parser {
 	[RuleVersion(0)]
 	public MostrarStatementContext mostrarStatement() {
 		MostrarStatementContext _localctx = new MostrarStatementContext(Context, State);
-		EnterRule(_localctx, 8, RULE_mostrarStatement);
+		EnterRule(_localctx, 12, RULE_mostrarStatement);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 44;
-			Match(T__3);
-			State = 45;
+			State = 74;
+			Match(T__8);
+			State = 75;
 			Match(ID);
 			}
 		}
@@ -402,12 +568,12 @@ public partial class NaturalLangOpsParser : Parser {
 	[RuleVersion(0)]
 	public ExprContext expr() {
 		ExprContext _localctx = new ExprContext(Context, State);
-		EnterRule(_localctx, 10, RULE_expr);
+		EnterRule(_localctx, 14, RULE_expr);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 47;
+			State = 77;
 			_la = TokenStream.LA(1);
 			if ( !(_la==ID || _la==NUMERO) ) {
 			ErrorHandler.RecoverInline(this);
@@ -450,14 +616,14 @@ public partial class NaturalLangOpsParser : Parser {
 	[RuleVersion(0)]
 	public OperadorContext operador() {
 		OperadorContext _localctx = new OperadorContext(Context, State);
-		EnterRule(_localctx, 12, RULE_operador);
+		EnterRule(_localctx, 16, RULE_operador);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 49;
+			State = 79;
 			_la = TokenStream.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 480L) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 15360L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -498,14 +664,14 @@ public partial class NaturalLangOpsParser : Parser {
 	[RuleVersion(0)]
 	public ComparatorContext comparator() {
 		ComparatorContext _localctx = new ComparatorContext(Context, State);
-		EnterRule(_localctx, 14, RULE_comparator);
+		EnterRule(_localctx, 18, RULE_comparator);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 51;
+			State = 81;
 			_la = TokenStream.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 7680L) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 245760L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -526,20 +692,29 @@ public partial class NaturalLangOpsParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,15,54,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
-		7,7,1,0,4,0,18,8,0,11,0,12,0,19,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,
-		1,31,8,1,1,2,1,2,1,2,1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,3,1,4,1,4,1,4,1,
-		5,1,5,1,6,1,6,1,7,1,7,1,7,0,0,8,0,2,4,6,8,10,12,14,0,3,1,0,13,14,1,0,5,
-		8,1,0,9,12,48,0,17,1,0,0,0,2,30,1,0,0,0,4,32,1,0,0,0,6,38,1,0,0,0,8,44,
-		1,0,0,0,10,47,1,0,0,0,12,49,1,0,0,0,14,51,1,0,0,0,16,18,3,2,1,0,17,16,
-		1,0,0,0,18,19,1,0,0,0,19,17,1,0,0,0,19,20,1,0,0,0,20,1,1,0,0,0,21,22,3,
-		4,2,0,22,23,5,1,0,0,23,31,1,0,0,0,24,25,3,6,3,0,25,26,5,1,0,0,26,31,1,
-		0,0,0,27,28,3,8,4,0,28,29,5,1,0,0,29,31,1,0,0,0,30,21,1,0,0,0,30,24,1,
-		0,0,0,30,27,1,0,0,0,31,3,1,0,0,0,32,33,3,10,5,0,33,34,3,12,6,0,34,35,3,
-		10,5,0,35,36,5,2,0,0,36,37,5,13,0,0,37,5,1,0,0,0,38,39,3,10,5,0,39,40,
-		3,14,7,0,40,41,3,10,5,0,41,42,5,3,0,0,42,43,5,13,0,0,43,7,1,0,0,0,44,45,
-		5,4,0,0,45,46,5,13,0,0,46,9,1,0,0,0,47,48,7,0,0,0,48,11,1,0,0,0,49,50,
-		7,1,0,0,50,13,1,0,0,0,51,52,7,2,0,0,52,15,1,0,0,0,2,19,30
+		4,1,20,84,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		7,7,2,8,7,8,2,9,7,9,1,0,4,0,22,8,0,11,0,12,0,23,1,1,1,1,1,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,1,3,1,36,8,1,1,2,1,2,1,2,1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,
+		3,1,3,1,4,1,4,1,4,1,4,1,4,4,4,55,8,4,11,4,12,4,56,1,4,1,4,1,4,1,4,4,4,
+		63,8,4,11,4,12,4,64,1,4,1,4,3,4,69,8,4,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,7,
+		1,7,1,8,1,8,1,9,1,9,1,9,0,0,10,0,2,4,6,8,10,12,14,16,18,0,3,1,0,18,19,
+		1,0,10,13,1,0,14,17,80,0,21,1,0,0,0,2,35,1,0,0,0,4,37,1,0,0,0,6,43,1,0,
+		0,0,8,49,1,0,0,0,10,70,1,0,0,0,12,74,1,0,0,0,14,77,1,0,0,0,16,79,1,0,0,
+		0,18,81,1,0,0,0,20,22,3,2,1,0,21,20,1,0,0,0,22,23,1,0,0,0,23,21,1,0,0,
+		0,23,24,1,0,0,0,24,1,1,0,0,0,25,26,3,4,2,0,26,27,5,1,0,0,27,36,1,0,0,0,
+		28,29,3,6,3,0,29,30,5,1,0,0,30,36,1,0,0,0,31,32,3,12,6,0,32,33,5,1,0,0,
+		33,36,1,0,0,0,34,36,3,8,4,0,35,25,1,0,0,0,35,28,1,0,0,0,35,31,1,0,0,0,
+		35,34,1,0,0,0,36,3,1,0,0,0,37,38,3,14,7,0,38,39,3,16,8,0,39,40,3,14,7,
+		0,40,41,5,2,0,0,41,42,5,18,0,0,42,5,1,0,0,0,43,44,3,14,7,0,44,45,3,18,
+		9,0,45,46,3,14,7,0,46,47,5,3,0,0,47,48,5,18,0,0,48,7,1,0,0,0,49,50,5,4,
+		0,0,50,51,3,10,5,0,51,52,5,5,0,0,52,54,5,6,0,0,53,55,3,2,1,0,54,53,1,0,
+		0,0,55,56,1,0,0,0,56,54,1,0,0,0,56,57,1,0,0,0,57,58,1,0,0,0,58,68,5,7,
+		0,0,59,60,5,8,0,0,60,62,5,6,0,0,61,63,3,2,1,0,62,61,1,0,0,0,63,64,1,0,
+		0,0,64,62,1,0,0,0,64,65,1,0,0,0,65,66,1,0,0,0,66,67,5,7,0,0,67,69,1,0,
+		0,0,68,59,1,0,0,0,68,69,1,0,0,0,69,9,1,0,0,0,70,71,3,14,7,0,71,72,3,18,
+		9,0,72,73,3,14,7,0,73,11,1,0,0,0,74,75,5,9,0,0,75,76,5,18,0,0,76,13,1,
+		0,0,0,77,78,7,0,0,0,78,15,1,0,0,0,79,80,7,1,0,0,80,17,1,0,0,0,81,82,7,
+		2,0,0,82,19,1,0,0,0,5,23,35,56,64,68
 	};
 
 	public static readonly ATN _ATN =

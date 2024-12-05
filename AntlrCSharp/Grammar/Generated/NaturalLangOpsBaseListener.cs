@@ -84,6 +84,30 @@ public partial class NaturalLangOpsBaseListener : INaturalLangOpsListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitBooleanOperation([NotNull] NaturalLangOpsParser.BooleanOperationContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.ifStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterIfStatement([NotNull] NaturalLangOpsParser.IfStatementContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NaturalLangOpsParser.ifStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitIfStatement([NotNull] NaturalLangOpsParser.IfStatementContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.condition"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCondition([NotNull] NaturalLangOpsParser.ConditionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="NaturalLangOpsParser.condition"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCondition([NotNull] NaturalLangOpsParser.ConditionContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="NaturalLangOpsParser.mostrarStatement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
